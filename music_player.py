@@ -8,9 +8,10 @@ from tkinter import filedialog
 
 
 root = tk.ThemedTk()
-root.get_themes()                 # Returns a list of all themes that can be set
+root.get_themes()
+root.title('Music Player')# Returns a list of all themes that can be set
 root.set_theme("radiance")
-root.title('MUSIC PLAYER')
+
 root.minsize(500,500)
 root.iconbitmap('C:/Users/kusha/PycharmProjects/GUI Emusic/icons/music.ico')
 root.resizable(0, 0)
@@ -105,6 +106,7 @@ def previoussong(event):
 
 directory = filedialog.askdirectory() ##Enter your music Directory path
 os.chdir(directory)
+root.title(directory)
 for  files in os.listdir(directory):
     try:
          if files.endswith(".mp3"):
