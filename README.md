@@ -28,7 +28,7 @@
 ### 2
 <img src="https://github.com/Spidy20/Music_Player_Python/blob/master/Screenshot%20(126).png">
 
-### Color Combination by [@Kanishkagupta](https://youtu.be/2xW6TP4Yojg)
+### Color Combination by [@Kanishkagupta](https://github.com/Kanishkagupta)
 
 
 ### Video Demo
