@@ -16,7 +16,7 @@ root.minsize(500,500)
 root.iconbitmap('C:/Users/kusha/PycharmProjects/GUI Emusic/icons/music.ico')
 root.resizable(0, 0)
 
-listbox=Listbox(root,selectmode=ACTIVE,width=100,height=20,bg="#0ff",fg="black")
+listbox=Listbox(root,selectmode=ACTIVE,width=100,height=20,bg="black",fg="white")
 listbox.pack(fill=X)
 
 sb =Scrollbar(root,orient = 'vertical')
@@ -47,8 +47,14 @@ def pausesong(event):
         pygame.mixer.music.pause()
         statusbar['text'] = "Music Pause"
     if(ctr%2==0):
-        pygame.mixer.music.unpause()
-        statusbar['text'] = "Playing music" + ' - ' + os.path.basename(listofsongs[index])
+        try:
+            pygame.mixer.music.unpause()
+            statusbar['text'] = "Playing music" + ' - ' + os.path.basename(listofsongs[index])
+            statusbar['text'] = "Playing music" + ' - ' + os.path.basename(listofsongs[item])
+        except Exception as e:
+            print(e)
+            pass
+
 
 
 def playsong(event):
@@ -69,7 +75,7 @@ def nextsong(event):
         secs = round(secs)
         timeformat2 = '{:02d}:{:02d}'.format(mins, secs)
         length['text'] = "Total Length" + ' - ' + timeformat2
-        listbox.itemconfig(index, bg='pink')
+        listbox.itemconfig(index, bg='orange',fg = 'black')
         import threading
         global t2
     else:
@@ -77,7 +83,7 @@ def nextsong(event):
         pygame.mixer.music.load(listofsongs[index])
         statusbar['text'] = "Playing music" + ' - ' + os.path.basename(listofsongs[index])
         pygame.mixer.music.play()
-        listbox.itemconfig(index, bg='pink')
+        listbox.itemconfig(index, bg='orange',fg = 'black')
         # listbox.selection_set(first=index)
     try:
       updatelabel()
@@ -98,7 +104,7 @@ def previoussong(event):
     timeformat1 = '{:02d}:{:02d}'.format(mins, secs)
     length['text'] = "Total Length" + ' - ' + timeformat1
     pygame.mixer.music.play()
-    listbox.itemconfig(index, bg='pink')
+    listbox.itemconfig(index, bg='orange',fg = 'black')
     try:
         updatelabel()
     except NameError:
@@ -127,7 +133,7 @@ for i in listofsongs:
 pygame.mixer.init()
 pygame.mixer.music.load(listofsongs[index])
 pygame.mixer.music.play()
-listbox.itemconfig(index, bg='pink')
+listbox.itemconfig(index, bg='orange',fg = 'black')
 
 from mutagen.mp3 import MP3
 audio = MP3(listofsongs[index])
@@ -148,6 +154,7 @@ def del_music(self):
 
 def play_music(self):
     items = map(int, listbox.curselection())
+    global item
     for item in items:
         item = int(item)
         pygame.mixer.music.load(listofsongs[item])
@@ -160,7 +167,7 @@ def play_music(self):
         timeformat1 = '{:02d}:{:02d}'.format(mins, secs)
         length['text'] = "Total Length" + ' - ' + timeformat1
         pygame.mixer.music.play()
-        listbox.itemconfig(item, bg='pink')
+        listbox.itemconfig(item, bg='orange',fg = 'black')
 
 
 def add_music(self):
@@ -205,8 +212,7 @@ def on_closing():
 
 root.protocol("WM_DELETE_WINDOW", on_closing)
 
-
-vol = Scale(root,from_ = 0,to = 100,orient = HORIZONTAL ,resolution = 10,command = show_value)
+vol = Scale(root,from_ = 0,to = 100,orient = HORIZONTAL ,relief =SUNKEN,resolution = 10,command = show_value,activebackground='cyan')
 vol.set(80)
 pygame.mixer.music.set_volume(0.8)
 vol.place(x=910, y = 436)
@@ -214,7 +220,7 @@ vol.place(x=910, y = 436)
 volume = Label(root, text="Volume", font='Times 13 bold')
 volume.place(x=840, y = 450)
 
-statusbar = Label(root, text="Welcome to Melody", relief=SUNKEN, anchor=W,background='lime green', font='Times 13 bold italic')
+statusbar = Label(root, text="Welcome to Melody", relief=SUNKEN, anchor=W,background='black',fg='white',font='Times 13 bold italic')
 statusbar.pack(side=BOTTOM, fill=X)
 
 statusbar['text'] = "Playing Music" + ' - ' + os.path.basename(listofsongs[index])
@@ -226,7 +232,7 @@ framemiddle.pack()
 framedown =Frame(root,width=400,height=300)
 framedown.pack()
 
-previousbutton = Button(framedown,text="◄◄",bg='#0ff',activebackground = "Red",width=15  ,height=2)
+previousbutton = Button(framedown,text="◄◄",bg='black',fg='white',activebackground = "Red",width=15  ,height=2)
 previousbutton.pack(side=LEFT)
 
 playbutton = Button(framedown,text="►",activebackground = "Red",width=15  ,height=2)
@@ -235,7 +241,7 @@ playbutton.pack(side=LEFT)
 mutebtn = Button(framedown,text="Play",activebackground = "Red",width=15  ,height=2)
 mutebtn.pack(side=LEFT)
 
-pausebutton = Button(framedown,bg='red',text="►/║║",activebackground = "white",width=15  ,height=2)
+pausebutton = Button(framedown,bg='black',fg='white',text="►/║║",activebackground = "white",width=15  ,height=2)
 pausebutton.pack(side=LEFT)
 
 del_button = Button(framedown,text="Del Song",activebackground = "Red",width=15  ,height=2)
@@ -244,7 +250,7 @@ del_button.pack(side=LEFT)
 add_button = Button(framedown,text="Add Song",activebackground = "Red",width=15  ,height=2)
 add_button.pack(side=LEFT)
 
-nextbutton = Button(framedown,text="►►",bg='#0ff',activebackground = "Red",width=15  ,height=2)
+nextbutton = Button(framedown,text="►►",bg='black',fg='white',activebackground = "Red",width=15  ,height=2)
 nextbutton.pack(side=LEFT)
 
 
