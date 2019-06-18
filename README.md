@@ -23,16 +23,13 @@
 ### Screenshots
 
 ### 1
-<img src="https://github.com/Spidy20/Music_Player_Python/blob/master/sc1.png">
+<img src="https://github.com/Spidy20/Music_Player_Python/blob/master/Screenshot%20(125).png">
 
 ### 2
-<img src="https://github.com/Spidy20/Music_Player_Python/blob/master/sc2.png">
+<img src="https://github.com/Spidy20/Music_Player_Python/blob/master/Screenshot%20(126).png">
 
-### 3
-<img src="https://github.com/Spidy20/Music_Player_Python/blob/master/sc3.png">
+### Color Combination by [@Kanishkagupta](https://youtu.be/2xW6TP4Yojg)
 
-### 4
-<img src="https://github.com/Spidy20/Music_Player_Python/blob/master/sc4.png">
 
 ### Video Demo
 https://youtu.be/w5aiqfRY8gg
